@@ -1,8 +1,10 @@
 import { expect, jest, test } from "@jest/globals";
 import defaultExport, { bar, foo } from "./foo-bar-baz";
 
-jest.mock("../foo-bar-baz", () => {
-  const originalModule = jest.requireActual("./foo-bar-baz");
+jest.mock("./foo-bar-baz", () => {
+  const originalModule = jest.requireActual(
+    "./foo-bar-baz"
+  ) as typeof import("./foo-bar-baz");
 
   return {
     __esModule: true,
